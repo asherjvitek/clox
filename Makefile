@@ -17,6 +17,6 @@ $(TARGET): $(OBJ)
 obj/%.o : src/%.c
 	@mkdir obj -p
 	@mkdir bin -p
-	@gcc -c $< -o $@ 
+	@gcc -c $< -o $@ -g
 
 
