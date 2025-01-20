@@ -63,24 +63,19 @@ static void runFile(const char *path) {
 }
 
 int main(int argc, const char *argv[]) {
-#ifdef PERFORMANCE_TEST
-    for (int i = 1; i < 10000000; i++) {
-#endif
-        initVM();
+    initVM();
 
-        if (argc == 1) {
-            repl();
-        } else if (argc == 2) {
-            runFile(argv[1]);
-        } else {
-            fprintf(stderr, "Usage: clox [path]\n");
-            exit(64);
-        }
-
-        freeVM();
-#ifdef PERFORMANCE_TEST
+    if (argc == 1) {
+        repl();
+        // interpret("1 + 1");
+    } else if (argc == 2) {
+        runFile(argv[1]);
+    } else {
+        fprintf(stderr, "Usage: clox [path]\n");
+        exit(64);
     }
-#endif
+
+    freeVM();
 
     return 0;
 }
